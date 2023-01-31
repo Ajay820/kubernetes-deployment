@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-api
+  name: myapi-deployment
+  namespace: web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-api
+  template:
+    metadata:
+      labels:
+        app: test-api
+    spec:
+      containers:
+        - image: ajay4uu/test-api:latest
+          name: test-api
+          ports:
+            - containerPort: 5000
